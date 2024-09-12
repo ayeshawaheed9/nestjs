@@ -16,7 +16,7 @@ exports.UpdateTitleHandler = void 0;
 const cqrs_1 = require("@nestjs/cqrs");
 const update_title_command_1 = require("./update-title.command");
 const typeorm_1 = require("@nestjs/typeorm");
-const task_entity_1 = require("../../task.entity");
+const task_entity_1 = require("../task.entity");
 const typeorm_2 = require("typeorm");
 let UpdateTitleHandler = class UpdateTitleHandler {
     constructor(taskRepository) {

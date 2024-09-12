@@ -17,14 +17,23 @@ const cqrs_1 = require("@nestjs/cqrs");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const get_tasks_query_1 = require("./get-tasks.query");
-const task_entity_1 = require("../../task.entity");
+const task_entity_1 = require("../task.entity");
+const get_tasks_dto_1 = require("../dto/get-tasks.dto");
 let GetTasksHandler = class GetTasksHandler {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;
-        console.log('GetTasksHandler initialized');
+        // console.log('GetTasksHandler initialized');
     }
     async execute(query) {
-        return await this.taskRepository.find();
+        const tasks = await this.taskRepository.find();
+        // Map Task entity to TaskResponseDto
+        return tasks.map(task => {
+            const response = new get_tasks_dto_1.getAlltasksDto();
+            response.title = task.title;
+            response.description = task.description;
+            response.isCompleted = task.isCompleted;
+            return response;
+        });
     }
 };
 exports.GetTasksHandler = GetTasksHandler;

@@ -16,18 +16,18 @@ exports.TaskController = void 0;
 const common_1 = require("@nestjs/common");
 const cqrs_1 = require("@nestjs/cqrs");
 const create_task_command_1 = require("./commands/create-task.command");
-const task_entity_1 = require("../task.entity");
 const get_tasks_query_1 = require("./queries/get-tasks.query");
 const get_task_by_id_query_1 = require("./queries/get-task-by-id.query");
 const update_iscompleted_command_1 = require("./commands/update-iscompleted.command");
 const update_title_command_1 = require("./commands/update-title.command");
+const create_task_dto_1 = require("./dto/create-task.dto");
 let TaskController = class TaskController {
     constructor(commandBus, queryBus) {
         this.commandBus = commandBus;
         this.queryBus = queryBus;
     }
-    async createTask(task) {
-        const command = new create_task_command_1.CreateTaskCommand(task.title, task.description);
+    async createTask(createTaskDto) {
+        const command = new create_task_command_1.CreateTaskCommand(createTaskDto.title, createTaskDto.description);
         return await this.commandBus.execute(command);
     }
     async updatetaskcompletion(id, isCompleted) {
@@ -59,7 +59,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [task_entity_1.Task]),
+    __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDto]),
     __metadata("design:returntype", Promise)
 ], TaskController.prototype, "createTask", null);
 __decorate([

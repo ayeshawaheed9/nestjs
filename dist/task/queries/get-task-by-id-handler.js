@@ -17,7 +17,7 @@ const cqrs_1 = require("@nestjs/cqrs");
 const get_task_by_id_query_1 = require("./get-task-by-id.query");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
-const task_entity_1 = require("../../task.entity");
+const task_entity_1 = require("../task.entity");
 let GetTasksbyIdHandler = class GetTasksbyIdHandler {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;

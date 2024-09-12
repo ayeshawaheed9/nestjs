@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { UpdateTitleCommand } from "./update-title.command";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Task } from "../../task.entity";
+import { Task } from "../task.entity";
 import { Repository } from "typeorm";
 
 @CommandHandler(UpdateTitleCommand)

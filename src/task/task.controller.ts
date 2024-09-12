@@ -1,11 +1,12 @@
 import { Controller, Get, Post,Put, Body, Param } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateTaskCommand } from './commands/create-task.command';
-import { Task } from '../task.entity';
+import { Task } from './task.entity';
 import { GetTasksQuery } from './queries/get-tasks.query';
 import { GetTasksbyIdQuery } from './queries/get-task-by-id.query';
 import { UpdateIsCompletedCommand } from './commands/update-iscompleted.command';
 import { UpdateTitleCommand } from './commands/update-title.command';
+import { CreateTaskDto } from './dto/create-task.dto';
 @Controller('tasks')
 export class TaskController {
   constructor(
@@ -14,8 +15,8 @@ export class TaskController {
   ) {}
 
   @Post()
-  async createTask(@Body() task: Task) {
-    const command = new CreateTaskCommand(task.title, task.description);
+  async createTask(@Body() createTaskDto: CreateTaskDto) {
+    const command = new CreateTaskCommand(createTaskDto.title, createTaskDto.description);
     return await this.commandBus.execute(command);
   }
   @Post('/status/:id')

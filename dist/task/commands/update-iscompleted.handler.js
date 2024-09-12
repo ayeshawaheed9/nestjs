@@ -17,7 +17,7 @@ const cqrs_1 = require("@nestjs/cqrs");
 const update_iscompleted_command_1 = require("./update-iscompleted.command");
 const typeorm_1 = require("typeorm");
 const typeorm_2 = require("@nestjs/typeorm");
-const task_entity_1 = require("../../task.entity");
+const task_entity_1 = require("../task.entity");
 let UpdateIsCompletedHandler = class UpdateIsCompletedHandler {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;

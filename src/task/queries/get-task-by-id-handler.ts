@@ -2,7 +2,7 @@ import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
 import { GetTasksbyIdQuery } from "./get-task-by-id.query";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Task } from "../../task.entity";
+import { Task } from "../task.entity";
 
 @QueryHandler(GetTasksbyIdQuery)
 export class GetTasksbyIdHandler implements IQueryHandler<GetTasksbyIdQuery>{

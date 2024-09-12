@@ -18,7 +18,9 @@ const cqrs_1 = require("@nestjs/cqrs");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const create_task_command_1 = require("./create-task.command");
-const task_entity_1 = require("../../task.entity");
+const task_entity_1 = require("../task.entity");
+const task_created_event_1 = require("../events/task-created-event");
+const event_emitter_1 = require("../event-emitter");
 let CreateTaskHandler = class CreateTaskHandler {
     constructor(taskRepository) {
         this.taskRepository = taskRepository;
@@ -27,6 +29,9 @@ let CreateTaskHandler = class CreateTaskHandler {
         const { title, description } = command;
         const task = new task_entity_1.Task(title, description);
         await this.taskRepository.save(task);
+        console.log('About to emit TaskCreated event');
+        event_emitter_1.eventEmitter.emit('TaskCreated', new task_created_event_1.TaskCreatedEvent(task.title, task.description));
+        console.log('Emitted TaskCreated event');
         return {
             message: 'Task Created',
             task: { task }

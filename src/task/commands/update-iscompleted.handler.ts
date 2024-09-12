@@ -2,7 +2,7 @@ import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { UpdateIsCompletedCommand } from "./update-iscompleted.command";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Task } from "../../task.entity";
+import { Task } from "../task.entity";
 
 @CommandHandler(UpdateIsCompletedCommand)
 export class UpdateIsCompletedHandler implements ICommandHandler<UpdateIsCompletedCommand> {

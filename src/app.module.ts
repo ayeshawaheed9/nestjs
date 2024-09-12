@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TasksModule } from './task/task.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Task } from './task.entity';
+import { Task } from './task/task.entity';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TaskController } from './task/task.controller';
 @Module({

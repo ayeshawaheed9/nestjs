@@ -15,12 +15,14 @@ const cqrs_1 = require("@nestjs/cqrs");
 const typeorm_1 = require("@nestjs/typeorm");
 const task_controller_1 = require("./task.controller");
 const task_service_1 = require("./task.service");
-const task_entity_1 = require("../task.entity");
+const task_entity_1 = require("./task.entity");
 const create_task_handler_1 = require("./commands/create-task.handler");
 const get_tasks_handler_1 = require("./queries/get-tasks.handler");
 const get_task_by_id_handler_1 = require("./queries/get-task-by-id-handler");
 const update_iscompleted_handler_1 = require("./commands/update-iscompleted.handler");
 const update_title_handler_1 = require("./commands/update-title.handler");
+const task_created_listener_1 = require("./listeners/task-created.listener");
+const task_created_event_1 = require("./events/task-created-event");
 let TasksModule = class TasksModule {
     constructor() {
         console.log('TasksModule initialized');
@@ -41,7 +43,7 @@ exports.TasksModule = TasksModule = __decorate([
             get_tasks_handler_1.GetTasksHandler,
             get_task_by_id_handler_1.GetTasksbyIdHandler,
             update_iscompleted_handler_1.UpdateIsCompletedHandler,
-            update_title_handler_1.UpdateTitleHandler
+            update_title_handler_1.UpdateTitleHandler, task_created_listener_1.taskCreatedListener, task_created_event_1.TaskCreatedEvent
         ]
     }),
     __metadata("design:paramtypes", [])
