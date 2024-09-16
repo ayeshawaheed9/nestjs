@@ -1,1 +1,1 @@
-"# nestjs" 
+"CQRS, DTO AND EVENT DRIVEN" 
